@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .container{
+      width: 60%;
+      margin: 0 auto;
+    }
+     ul,li{
+        text-decoration: none;
+       list-style: none;
+      }
+    .fl{
+      float: left;
+    }
+    .clearfix{
+      clear: both;
+    }
+    .pr{
+      position: relative;
+    }
+    .pa{
+      position: absolute;
+    }
+    .box{
+      width: 850px;
+      height: 480px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .box ul li{
+      width: 850px;
+      height: 480px;
+    }
+    .box ul li p{
+      width: 290px;
+    }
+    .prev {
+      width: 44px;
+      height: 84px;
+      margin-top: 134px;
+      background: url(images/l_arrow.png) no-repeat;
+      cursor: pointer;
+    }
+     .next {
+       width: 44px;
+       height: 84px;
+       margin-top: 134px;
+       background: url(images/r_arrow.png) no-repeat;
+       cursor: pointer;
+     }
+    .fr{
+      float: right;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="fl prev"></div>
+  <div class="fr next"></div>
+  <div class="box">
+    <ul class="clearfix pr">
+      <li class="fl pr">
+        <img class="pa" src="images/pic.jpg" alt="">
+        <p class="pa">这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍。111</p>
+      </li>
+      <li class="fl pr">
+        <img class="pa" src="images/pic.jpg" alt="">
+        <p class="pa">这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍。222</p>
+      </li>
+      <li class="fl pr">
+        <img class="pa" src="images/pic.jpg" alt="">
+        <p class="pa">这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍。333</p>
+      </li>
+      <li class="fl pr">
+        <img class="pa" src="images/pic.jpg" alt="">
+        <p class="pa">这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍。444</p>
+      </li>
+      <li class="fl pr">
+        <img class="pa" src="images/pic.jpg" alt="">
+        <p class="pa">这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍这里是介绍文字这里是介绍这里是介绍这里是介绍。555</p>
+      </li>
+    </ul>
+  </div>
+</div>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+<script>
+  var firstImg=$('.box ul li').first().clone(true);
+  var timer=null;
+ $('.box ul').append(firstImg).width($('.box ul li').length*($('.box ul li').width()));
+  var i=0;
+  $('.prev').click(function () {
+      i--;
+      if(i==-1) {
+         i=$('.box ul li').length-1;
+        $('.box ul').stop().animate({left:-(i*850)},300)
+      }
+        $('.box ul').stop().animate({left:-(i*850)},300)
+
+  });
+  $('.next').click(function () {
+    i++;
+    if(i==$('.box ul li').length){
+      i=0;
+      $('.box ul').css({left:0});
+    }
+      $('.box ul').stop().animate({left:-(i*850)},300)
+
+  })
+  function player() {
+    timer=setInterval(function () {
+      i++;
+      if(i==$('.box ul li').length){
+        i=1;
+        $('.box ul').css({left:0});
+      }
+      $('.box ul').stop().animate({left:-(i*850)},300)
+    },3000)
+  }
+  player();
+  $('.container').hover(function () {
+    clearInterval(timer);
+  },function () {
+    player();
+  })
+</script>
+</body>
+</html>

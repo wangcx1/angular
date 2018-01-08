@@ -1,0 +1,221 @@
+Angular
+1.angular的特性和优点
+数据绑定（会产生性能问题）、模板功能强大丰富、MVC、依赖注入（事件驱动）JQuery（操作DOM元素）、指令（自定义指令、内置指令）全新的命令行工具AngularCLI、服务器端渲染、移动和桌面兼容
+2.组件：是angular应用的基本构建块。你可以把一个组件理解为一段带有业务逻辑和数据的HTML   指令：允许你向HTML元素添加自定义行为    模块用来将应用中不同的部分组织成一个Angular框架可以理解的单元   服务：用来封装可重用的业务逻辑
+依赖注入：它是一种编程模式，可以让类从外部源中获得它的依赖，而不必亲自创建它们。
+3.使用Angular Route 导航
+Routes：路由配置，保存着哪个URL对应展示哪个组件，以及在哪个RouteOutlet中展示组件
+RouterOutlet：在HTML中标记路由内容呈现位置的占位符指令
+Router：负责在运行时执行路由的对象，可以通过调用其navigate（）和navigateByUrl（）方法来导航到一个指定的路由
+RouteLink 在HTML中声明路由导航用的指令
+ActivatedRoute:当前激活的路由对象，保存着当前路由的信息，如路由地址，路由参数等。Snapshot：参数快照  subscribe：参数订阅。
+激活路由：该路由的路径和参数可以通过注入进来一个名叫ActivatedRoute的路由服务来获取。
+URL：路由路径Observable对象，是一个由路由路径中的各个部分组成的字符串数组。
+Data：一个Observable，其中包含提供给路由的data对象，也包含由解析守卫解析而来的值。
+paramMap：一个Observable，其中包含一个由当前路由的必要参数和可选参数组成的map对象，用这个map可以获取来自同名参数的单一值或多重值。
+queryParamMap：一个Observable，其中包含一个对所有路由都有效的查询参数组成的map对象，用这个map对象可以获取来自同名参数的单一值或多重值。
+Outlet：要把该路由渲染到RouteOutlet的名字，对于无名路由，它的路由名是primary，而不是空串。
+routeConfig：用于该路由的路由配置信息，其中包含原始路径。
+Parent：当该路由是一个子路由时，表示该路由的父级ActivetedRoute.。
+firstChild：包含该路由的子路由列表中的第一个ActivetedRoute.
+Children：包含当前路由下所有已激活的子路由。
+路由事件：在每次导航中，Router都会通过Router.events属性发布一些导航事件，这些事件范围涵盖了从开始导航到结束导航之间的很多时间点。
+NavigationStart ：本事件会在导航开始时触发。
+RouteRecongnized:本事件会在路由器解析完URL，并识别出了相应的路由时触发
+RouteConfigLoadStart：本事件会在Router对一个路由配置进行惰性加载之前触发。
+RouteConfigLoadEnd：本事件会在路由被惰性结束之后触发
+NavigationCancel：本事件会在导航被取消之后触发，这可能是因为在导航期间某个路由守卫返回了false。
+NavigationError:这个事件会在导航由于意料之外的错误而失败时触发。
+Router（路由器）：为激活的URL显示应用组件，管理从一个组件到另一个组件的导航。
+RouterModule（路由器模块）：一个独立的Angular模块，用于提供所需的服务提供商，以及用来在应用视图之间进行导航的指令。
+Routes（路由数组）：定义了一个路由数组，每一个都会把一个URL路径映射到一个组件。
+Route（路由）：定义路由器如何根据URL模式（pattern）来导航到组件。大多数路由都是由路径和组件类构成。
+RouteOutlet（路由出口）：该指令（<router-outlet>）用来标记出路由器改在哪里显示视图。
+RouterLink（路由链接）：该指令用来把一个可点击的HTML元素绑定到路由。点击带有绑定到字符串或链接参数数组的routerLink指令元素就会触发一次导航。
+RouterLInkActive（活动路由链接）：当HTML元素或元素内的routerLink变为激活或非激活状态时，该指令为这个HTML元素添加或移除CSS类。
+RouterState（路由状态）：路由器的当前状态包含了一颗由程序中激活的路由构成的树，它包含一些用于遍历路由树的快捷方法。
+链接参数数组：这个数组会被路由器解释成一个路由操作指南，我们可以把一个RouterLInk绑定到改数组，或者把它作为参数传给Router.navigate方法。
+路由组件：一个带有RouterOutlet的Angular组件，他根据路由器的导航来显示相应的视图。
+通配符路由：path：‘**’，通配符路由的path是两个星号，它会匹配任何URL。当路由器匹配不上以前定义的那些路由时，它就会选择这个路由。路由器使用先匹配者优先的策略来选择路由。通配符路由是有配置中最没有特定性的那个，因此务必确保它是配置中的最后一个路由。
+4、重定向路由：在用户访问一个特定的地址时，将其重定向到另一个指定的地址。redirectTo：重定向  他出现在通配符路由的紧上方。
+5、辅助路由：
+6、路由守卫：只有当用户已经登录并拥有某些权限时才能进入某些路由。一个有多个表单组件组成的向导。例如：注册流程，用户只有在当前路由的组件中填写了满足要求的信息才可以导航到下一个路由。 当用户未执行保存操作而试图离开当前导航时提醒用户。
+CanActive：处理导航到路由的情况  CanDeactivate：处理从当前路由离开的情况  Resolve：在路由激活之前获取路由数据
+7、依赖注入：可测试性。松耦合  它是一种编程模式，可以让类从外部源中获得它的依赖，而不必亲自创建它们
+8、重构Auction  编写ProductService，包含3个方法：getProducts（），getProduct（id）,以及getCommentsForProduct（id）
+9、数据绑定、响应式编程和管道  数据绑定：事件绑定、属性绑定、
+HTML属性和DOM属性的关系：1、少量HTML属性和DOM属性之间有着1:1的映射，如id。2、有些HTML属性没有对应的DOM属性，如colspan 3、有些DOM属性没有对应的HTML属性，如textContent
+4、就算名字相同，HTML属性和DOM属性也不是同一样东西 5、HTML属性的值指定了初始值，DOM属性的值表示当前值。DOM属性的值可以改变；HTML属性的值不能改变。6、模板绑定是通过DOM属性和事件来工作的，而不是HTML属性。
+HTM属性绑定：基本HTML属性绑定  CSS类绑定、样式绑定
+ 响应式编程：
+10、组件间通讯：组件的输入输出属性  使用中间人模式传递数据、组件生命周期以及angular的变化发现机制
+输入属性：是用input装饰器注解的属性 只能用于父子关系，是父组件传递给子组件
+中间人模式：让两个组件相互通信     EventEmitter:使用指令和组件发出自定义事件
+11、组件初始化阶段：constructor、ngOnInit、ngAfterContentInit、
+ngAfterViewInit、ngOnDestory只执行一次   zone.js检测组件模板上的组件  变更检测机制
+ngOnChanges只有输入属性发生变化时才被调用、ngDoCheck、ngAfterContentChecked、ngAfterViewChecked 视图被组装完毕以后调用。如果组件有子组件，所有子组件组装完成后父组件才会被调用。不要在这两个里面直接改变视图中绑定的东西，如果想改变写在setTimeOut里面、ngDoCheck：变化检测  ng-content:可以定义多个投影点，只能绑定父组件中的属性，innerHTML只能绑定当前组件的内容。 AfterContentInit,AfterContentChecked
+12、父子组件之间应该避免直接访问彼此的内部，而应该通过输入输出属性来通讯。
+   组件可以通过输出属性发射自定义事件，这些事件可以携带任何你想携带的数据。、
+在没有父子关系的组件之间，尽量使用中间人模式进行通讯
+父组件可以在运行时投影一个或多个模板片段到子组件
+每个angular组件都提供了一组生命周期钩子，共你在某些特定的事件发生时执行相应的逻辑。
+Angular的变更检测机制会监控组件属性的变化并自动更新视图，这个检测非常频繁并且默认是针对整个组件树的，所以实现相关钩子时要慎重。
+你可以标记你的组件树中的一个分支，使其被排除在变更检测机制之外。
+13、表单处理：纯HTML表单 ：显示表单项、校验用户输入、提交表单数据。模板式表单：表单的数据模型是通过组件模板中的相关指令来定义的，因为使用这种方式定义表单的数据模型时，我们会受限于HTML的语法，所以，模板驱动方式只适用于一些简单的场景。
+·响应式表单  使用响应式表单时，你通过编写TypeScript代码而不是HTML代码来创建一个底层的数据模型，在这个模型定义好以后，你使用一些特定的指令，将模板上的HTML元素与底层的数据模型链接在一起。
+不按时那种表单，都有一个对应的数据模型来存储表单的数据。在模板式表单中，数据模型是有angular基于你组件模板中的指令隐式创建的。而在响应式表单中，你通过编码明确的创建数据模型然后在模板上的HTML元素与底层的数据模型连接在一起
+数据模型并不是一个任意的对象，它是一个有angular/forms模板中的一些特定的类，如FormControl，FormGroup、FormArray等组成的。在模板式表单中，你是不能直接访问到这些类的。
+响应式表单并不会替你生成HTML，模板仍然需要你自己来编写。
+14、响应式表单：FormControl：构成表单的基本单位 FormGroup：既可以代表表单的一部分也可以代表整个表单  FormArray：可以增长的字段集合  所有的指令都是以form开头
+FormBuilder:重构表单
+状态字段：touched和untouched ：字段是否获得焦点   pristine和dirty ：字段是否改变 pending：所有的字段在校验的时候
+表单处理：模板式表单、响应式表单、表单验证
+formControlName必须用在formGroupName里面 且表单里面需要写[formGroup]=formModel
+表单校验：校验器  Validators
+equalValidator:(group:FormGroup):any{
+Let password:FormControl=group.get(‘password’) as FormControl;
+Let pconfirm:FormControl=group.get(‘pconfirm’) as FormControl;
+Let valid:boolean=(password.value===pconfirm.value);
+Return valid?Null:{equal:true};
+}
+15、与服务器通讯：创建web服务器 、Http通讯、websocket通讯
+使用nodeJS创建服务器、使用Express创建restful的http服务、监控服务器文件的变化
+①、初始化server文件夹  npm init -y
+②、引入node的类型定义文件npm i @types/node --save
+③、配置typescript  setting->typescript-Enable TypeScript
+④、启动node服务器 node build/action_server.js
+⑤、npm install express --save 安装express框架，它提供了typescript所需要的内容
+⑥、npm install @types/exptess --save
+⑦、npm install -g nodemon 检测服务器加载最新的代码
+⑧、
+16、webSocket协议：允许进行同时发送请求时接收数据 ws依赖库
+http服务，它来自HTTPModule，只有在调subscribe时才发请求
+WebSocket协议，它更简洁和高效，它是双向的。
+17、构建和部署  
+构建：编译和合并
+部署：与服务器整合
+多环境：一套代码支持多个环境
+构建：ng-build
+部署：nodemon build/Action_server.js
+多环境：angular-cli---ng build --env-prod
+①、安装angular的脚手架 npm -g @angular/cli 
+②、ng -v
+③、ng new 项目名
+④、生成组件 ng g component product
+⑤、npm install ws --save 
+⑥、npm install @types/ws --save-dev
+⑦、ng g service shared/websocket 
+18、RxJS是一种针对异步数据流编程的工具，或者叫响应式扩展编程；Angular引入rxjs为了就是让异步可控、更简单。
+19、Observable只是一个普通的函数，要想让他有所作为，就需要跟observe一起使用；前者是受后者是攻。而这个observe只是一个带有next、error、complete的简单对象。还需要通过subscribe订阅来启动Observable；否则他是不会有任何反应；而订阅也会返回一个可用于取消操作（在RXJs里叫unsubscribe）
+当Observable设置观察者后，而连接并获取原始数据的这个过程叫生产者，可能是DOM中的click事件、input事件、或者更加复杂的http通信。
+20、什么是observe？Observe非常简单，像上面实例中subscribe订阅就是一个接收observe方法。从语法的角度来讲和subscribe（{next,error,complete}）是一样的。
+当Observable产生一个新的值时，会通知observer的next（），而当捕获失败可以调用error（）。
+当Observable被订阅后，除非调用observer的complete（）或unsubscribe（）取消订阅情况以外，会一直将值传递给observer。
+Observable的生产的值允许经过一序列格式化或操作，最终得到一个有价值的数据给观察者，而这一切是由一序列链式operator来完成的，每一个operator都会产生一个新的Observable，而我们也称这一序列过程为流。
+21、什么是operator？
+正如前面说到的，Observable可以链式写法，Observable.fromEvent(node,’input’).map((event:any)=>event.target.value).filter(value=>value.length>=2).subscribe(value=>{console.log(value)});
+下面是整个顺序步骤：
+①、假设用户输入：a
+②、Observable对触发oninput事件作出反应，将值以参数的形式传递给observer的next()
+③、Map()根据event.target.value的内容返回一个新的Observable，并调用next()传递给下一个observer，
+④、Filter（）如果值的长度》=2的话，则返回一个全新的Observable，并调用next（）传递给下一个observer。
+⑤、最后，将结果传递给subscribe订阅块。
+每一次operator都会返回一个新的Observable，不管operator有多少个，最终只有最后一个Observable会被订阅。
+22、不要忘记取消订阅   Observable当有数据产生时才会推送给订阅者，所以它可能会无限次向订阅者推送数据。正因为如此，在angular里面创建组件的时候务必要取消订阅操作，以避免内存泄漏。
+Unsubscribe 前面实例讲过，调用subscribe（）后，会返回一个Subscription可用于取消操作unsubscribe（）。最合理的方式在ngOnDestroy调用它。
+23、EventEmitter  其实EventEmitter跟RxJS没有直接关系，因为他是angular的产物，而非Rxjs的东西。EventEmitter的作用是指令或组件能自定义事件。
+24、创建数据流：
+①、单值：of、empty、never
+②、多值：from
+③、定时：interval、timer
+④、从事件创建：fromEvent
+⑤、从Promise创建：fromPromise
+⑥、自定义创建：create
+25、转换操作
+①、改变数据形态：map、mapTo、pluck
+②、过滤一些值：filter、skip、first、last、take
+③、时间轴上的操作：delay、timeout、throttle、debounce、audit、bufferTime
+④、累加：reduce、scan
+⑤、异常处理：throw、catch、retry、finally
+⑥、条件执行：takeUntil、delayWhen、retryWhen、subscribeOn、ObserveOn
+⑦、转接：switch
+26、组合数据流
+①、concat，保持原来的序列顺序连接两个数据流
+②、Merge，合并序列
+③、Race，预设条件为其中一个数据流完成
+④、forkJoin，预设条件为所有数据流都完成
+⑤、Zip，取各来源数据流最后一个值合并为对象
+⑥、combineLatest，取各来源数据流最后一个值合并为数组
+27、bootstrap中jQuery无法选中复选框解决办法
+$(‘.check’).prop("checked",true); 		$(‘.check’).parent("span").addClass("checked");
+JSON对象转化为JSON字符串 JSON.stringfy()
+JSON字符串转化为对象：JSON.parse()
+只有调用subscribe方法时请求才发送出去
+28、ViewChild是属性装饰器，用来从模板视图中获取匹配的元素。视图查询在ngAfterViewInit钩子函数调用前完成。因此在ngAfterViewInit钩子函数中，才能正确获取查询的元素。
+29、Cookie存在安全隐患，就是cookie中的数据可以在客户端被修改。  cookie是http协议的一部分，它的处理分为几步：
+1、服务端向客户端发送cookie
+2、浏览器保存cookie
+3、每次请求浏览器都将cookie发送给服务器
+30、session session的数据是保存在服务端的，session的运作通过一个session_id来进行。Session_id通常存在cookie中，在express中，默认是connect.sid这个字段。当请求到来时，服务端检查cookie中保存的session_id，并通过session_id 与服务器端的session数据关联起来。因此，当你访问网页时，服务端随机产生了一个1024比特的字符串存在客户端的cookie中。当你下次访问时，cookie会带有这个字段，然后浏览器就知道你是上次访问过得某某了。由于session数据是存储在服务器的，并且session_id是随机产生的，位数也足够多，所以不用担心被人伪造。
+31、Angular指令简介：Angular指令分为三种：
+组件（Component directive）：用于构建UI组件，继承于Directive类
+属性指令（Attribute directive）：用于改变组件的外观或行为
+结构指令（Structural directive）：用于动态添加或删除DOM元素来改变DOM布局
+
+
+
+
+
+
+1、在Angular中，我们可以使用HostBinding装饰器，实现元素的属性绑定。
+指令的作用：该指令用于演示如何利用HostBinding装饰器，设置元素的innerText属性。
+2、定义输入属性：为了能够让用户自定义GreetDirective指令的问候内容，我们需要使用Input装饰器去定义指令的输入属性。
+指令的作用：该指令用于演示如何利用Input装饰器，定义指令的输入属性，从而实现让用户自定义问候内容。
+3、事件处理：在angular中，我们可以使用HostListener属性装饰器，实现元素的事件绑定。
+指令的作用：该指令用于演示如何利用HostListener装饰器，监听用户的点击事件。
+4、获取宿主元素属性值：在angular中，我们可以通过Attribute装饰器来获取指令宿主元素的属性值。
+指令的作用：该指令用于如何利用Attribute装饰器，获取指令宿主元素上的自定义属性author的值。
+5、使用<ng-template>元素，在Angular中，我们可以通过ViewChild装饰器来获取视图中定义的模板元素，然后利用ViewContainerRef对象的createEmbeddedView（）方法，创建内嵌视图。
+6、使用ngTemplateOutlet指令，该指令用于基于已有的TemplateRef对象，插入对应的内嵌视图。在应用NgTemplateOutlet指令时，我们可以通过[ngTemplateOutletContext]属性来设置EmbeddedViewRef的上下文对象。绑定的上下文应该是一个对象，此外可通过let语法声明绑定上下文对象属性名。
+7、创建结构指令 该指令实现ngIf指令相反的效果，当指令的输入条件为Falsy值时，显示DOM元素。
+8、Angular中指令与组件有什么关系？
+组件继承于指令，并扩展了与视图相关的属性，如template、styles、animations、encapsulation等
+指令中的TemplateRef与ViewContainerRef有什么作用？
+TemplateRef：用于表示内嵌的template模板元素，通过Template实例，我们方便创建内嵌视图（Embedded Views），且可以轻松地访问到通过ElementRef封装后的nativeElement。需要注意的是组件视图中的template模板元素，经过渲染后会被替换成comment元素。
+ViewContainerRef：用于表示一个视图容器，可添加一个或多个视图。通过ViewContainerRef实例，我们可以基于TemplateRef实例创建内嵌视图，并能指定内嵌视图的插入位置，也可以方便对视图容器中已有的视图进行管理，简而言之，ViewContainerRef的主要作用是创建和管理内嵌视图或组件视图。
+32、angular动画
+1、安装动画库 npm install @angular/animations --save
+2、根据animations:[ //在position状态改变时，触发动画 trigger('position',[ //position为left时的样式 state('left',style({ 'margin-left': 0, 'background-color':'yellow' })), //position为right时的样式 state('right',style({ 'margin-left': 200, 'background-color':'blue' })), //状态切换时的动画设置 transition('left => right',animate('1000ms ease-in')), transition('right => left',animate('1000ms ease-out')) ]) ]
+33、text-overflow:显示省略符号来代表被修剪的文本；
+34、White-space:nowrap 文本不会换行
+35、手机端页面布局：
+Window.innerWidth/Height包含滚动条
+Window.documentElement.clientWidth/Heitht不包含
+度量HTML元素的尺寸：document.documentElement.offsetWidth/Height
+坐标事件：pageX/Y:从HTML原点到事件触发点的CSS的pixels；
+clientX/Y:从viewport原点（浏览器窗口）到事件触发点的CSS的pixels
+screenX/Y:从用户显示器窗口原点到事件触发点的设备的pixels
+Device-width/height使用screen.width/height来作为的判定值。该值以设备的pixels来度量。
+Width/height使用documentElement.clientWidth/Height即viewport的值，该值以CSS的pixels来度量。
+vw:是Viewport’s width的简写，1vw等于window.innerWidth的1%；
+Vh:和vw类似，是Viewport’s height的简写，1vh等于window.innerHeight的1%；
+Vmin:vmin的值是当前vw和vh中较小的值
+Vmax：vmax的值是当前vw和vh中较大的值
+Background-size:是CSS3的新属性，用于设置背景图片的大小，有两个可选值，第一个值用于指定背景的宽度，第二个值用于指定背景的高度。
+Background-size:cover；等比扩展图片来填满元素
+Background-size：contain；等比缩小图片来适应元素尺寸
+DPR=物理像素/逻辑像素
+1、在js中，通过window.devicePixelRatio来获取
+2、在CSS中，可以通过-webkit-device-pixel-ratio,-webkit-min-device-pixel-ratio和-webkit-max-device-pixel-ratio进行媒体查询，对不同DPR设备，做一些样式适配（这里只针对webkit内核的浏览器和webview）
+3、Flex兼容性
+.flex { display: box; /* OLD - Android 4.4- */ display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ display: -ms-flexbox; /* TWEENER - IE 10 */ display: -webkit-flex; /* NEW - Chrome */ display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */ }
+/* 子元素-平均分栏 */ .flex1 { -webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */ -moz-box-flex: 1; /* OLD - Firefox 19- */ /* width: 20%; */ /* For old syntax, otherwise collapses. */ /* 见本文底部评论@Lawrence */ -webkit-flex: 1; /* Chrome */ -ms-flex: 1; /* IE 10 */ flex: 1; /* NEW, Spec - Opera 12.1, Firefox 20+ */ } /* 父元素-横向排列（主轴） */ .flex-h { display: box; /* OLD - Android 4.4- */ display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ display: -ms-flexbox; /* TWEENER - IE 10 */ display: -webkit-flex; /* NEW - Chrome */ display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */ /* 09版 */ -webkit-box-orient: horizontal; /* 12版 */ -webkit-flex-direction: row; -moz-flex-direction: row; -ms-flex-direction: row; -o-flex-direction: row; flex-direction: row; } /* 父元素-横向换行 */ .flex-hw { /* 09版 */ /*-webkit-box-lines: multiple;*/ /* 12版 */ -webkit-flex-wrap: wrap; -moz-flex-wrap: wrap; -ms-flex-wrap: wrap; -o-flex-wrap: wrap; flex-wrap: wrap; } /* 父元素-水平居中（主轴是横向才生效） */ .flex-hc { /* 09版 */ -webkit-box-pack: center; /* 12版 */ -webkit-justify-content: center; -moz-justify-content: center; -ms-justify-content: center; -o-justify-content: center; justify-content: center; /* 其它取值如下： align-items 主轴原点方向对齐 flex-end 主轴延伸方向对齐 space-between 等间距排列，首尾不留白 space-around 等间距排列，首尾留白 */ } /* 父元素-纵向排列（主轴） */ .flex-v { display: box; /* OLD - Android 4.4- */ display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ display: -ms-flexbox; /* TWEENER - IE 10 */ display: -webkit-flex; /* NEW - Chrome */ display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */ /* 09版 */ -webkit-box-orient: vertical; /* 12版 */ -webkit-flex-direction: column; -moz-flex-direction: column; -ms-flex-direction: column; -o-flex-direction: column; flex-direction: column; } /* 父元素-纵向换行 */ .flex-vw { /* 09版 */ /*-webkit-box-lines: multiple;*/ /* 12版 */ -webkit-flex-wrap: wrap; -moz-flex-wrap: wrap; -ms-flex-wrap: wrap; -o-flex-wrap: wrap; flex-wrap: wrap; } /* 父元素-竖直居中（主轴是横向才生效） */ .flex-vc { /* 09版 */ -webkit-box-align: center; /* 12版 */ -webkit-align-items: center; -moz-align-items: center; -ms-align-items: center; -o-align-items: center; align-items: center; } /* 子元素-显示在从左向右（从上向下）第1个位置，用于改变源文档顺序显示 */ .flex-1 { -webkit-box-ordinal-group: 1; /* OLD - iOS 6-, Safari 3.1-6 */ -moz-box-ordinal-group: 1; /* OLD - Firefox 19- */ -ms-flex-order: 1; /* TWEENER - IE 10 */ -webkit-order: 1; /* NEW - Chrome */ order: 1; /* NEW, Spec - Opera 12.1, Firefox 20+ */ } /* 子元素-显示在从左向右（从上向下）第2个位置，用于改变源文档顺序显示 */ .flex-2 { -webkit-box-ordinal-group: 2; /* OLD - iOS 6-, Safari 3.1-6 */ -moz-box-ordinal-group: 2; /* OLD - Firefox 19- */ -ms-flex-order: 2; /* TWEENER - IE 10 */ -webkit-order: 2; /* NEW - Chrome */ order: 2; /* NEW, Spec - Opera 12.1, Firefox 20+ */ }
+微信小程序
+1、.json后缀的JSON配置文件
+2、.wxml后缀的WXML模板文件
+3、.wxss后缀的WXSS样式文件
+4、.js后缀的JS脚本逻辑文件
+5、JSON配置：包括了小程序的所有页面路径、界面表现、网络超时时间、底部tab等。Pages字段----用于描述当前小程序所有页面路径，这是为了让微信客户端知道当前你的小程序页面定义在哪个目录。Window字段-----小程序所有页面的顶部背景颜色，文字颜色定义在这里的。
+6、HTML经常用到的标签div、p、span，在小程序的wxml用的标签是view，button，text等等，这些标签就是小程序给开发者包装好的基本的能力，还提供了地图，视频，音频等等组件的能力。
+7、MVVM的开发模式（例如React、Vue），提倡把渲染和逻辑分离。简单来说就是不要让JS直接操控DOM，JS只需要管理状态即可，然后再通过一种模板语法来描述状态和界面结构的关系即可。数据绑定是描述状态和界面的关系
+8、Wxss：新增了尺寸单位rpx、提供了全局的样式和局部样式、此外wxss仅支持部分css选择器。
